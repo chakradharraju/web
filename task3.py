@@ -31,8 +31,8 @@ model.add(Dropout(0.2))
 model.add(Dense(10,activation=tf.nn.softmax))
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 model.fit(x=x_train,y=y_train, epochs=3)
-test_loss,test_acc = model.evaluate(x_test, y_test)
-accuracy = text['accuracy'][1] * 100
+test_acc = model.evaluate(x_test, y_test)
+accuracy = test_acc['accuracy'][1] * 100
 accuracy = int(accuracy)
 f=open("accuracy.txt","w+")
 f.write(str(accuracy))
