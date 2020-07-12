@@ -1,57 +1,5 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# ### Fashion MNIST
-
-# ### After downloading our dataset we see it's coded in the ubyte form
-# - We then use the following function to read the data and return it as a numpy array
-
-# In[1]:
-
-
-import struct
-import numpy as np
-
-def read_idx(filename):
-    """Credit: https://gist.github.com/tylerneylon"""
-    with open(filename, 'rb') as f:
-        zero, data_type, dims = struct.unpack('>HBB', f.read(4))
-        shape = tuple(struct.unpack('>I', f.read(4))[0] for d in range(dims))
-        return np.frombuffer(f.read(), dtype=np.uint8).reshape(shape)
-
-
-# ### We use the function to extact our training and test datasets
-
-# In[2]:
-
-
-x_train = read_idx("./root/mlops/fashion_mnist/train-images-idx3-ubyte")
-y_train = read_idx("./root/mlops/fashion_mnist/train-labels-idx1-ubyte")
-x_test = read_idx("./root/mlops/fashion_mnist/t10k-images-idx3-ubyte")
-y_test = read_idx("./root/mlops/fashion_mnist/t10k-labels-idx1-ubyte")
-
-
-# ### Let's inspect our dataset
-
-# In[3]:
-
-
-# printing the number of samples in x_train, x_test, y_train, y_test
-#print("Initial shape or dimensions of x_train", str(x_train.shape))
-
-#print ("Number of samples in our training data: " + str(len(x_train)))
-#print ("Number of labels in our training data: " + str(len(y_train)))
-#print ("Number of samples in our test data: " + str(len(x_test)))
-#print ("Number of labels in our test data: " + str(len(y_test)))
-#print()
-#print ("Dimensions of x_train:" + str(x_train[0].shape))
-#print ("Labels in x_train:" + str(y_train.shape))
-#print()
-#print ("Dimensions of x_test:" + str(x_test[0].shape))
-#print ("Labels in y_test:" + str(y_test.shape))
-
-
-
+import tensorflow as tf
+(x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
 from keras.datasets import mnist
 from keras.utils import np_utils
 import keras
