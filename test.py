@@ -134,8 +134,7 @@ model.compile(loss = 'categorical_crossentropy',
 
 
 history = model.fit(x_train, y_train,
-          batch_size=batch_size,
-          epochs=epochs,
+          epochs=3,
           verbose=1,
           validation_data=(x_test, y_test))
 
@@ -143,7 +142,7 @@ score = model.evaluate(x_test, y_test, verbose=0)
 
 #print('Test loss:', score[0])
 print('Test accuracy:', score[1])
-f = open("/root/mlops/sumit.txt", "w")
+f = open("/root/task3/sample.txt", "w")
 accuracy=score[1] * 100
 acc= int(accuracy)
 f.write(str(acc))
