@@ -27,7 +27,7 @@ model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=
 history=model.fit(x=x_train,y=y_train, epochs=3)
 score = model.evaluate(x_test, y_test , verbose=0)
 print('Test accuracy:',score[1])
-f = open("/root/task3/sample.txt", "w")
+f = open("/root/task3/accuracy.txt", "w+")
 accuracy=score[1] * 100
 acc= int(accuracy)
 f.write(str(acc))
